@@ -1,1 +1,172 @@
+@import url('https://rsms.me/inter/inter.css');
+html { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
+/* font */
+* {
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+}
 
+body {
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
+    grid-template-areas: "header" "main" "footer";
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+
+/* text */
+
+h1 {
+    font-size: 3.052rem;
+}
+
+h2 {
+    font-size: 2.441rem;
+}
+
+h3 {
+    font-size: 1.953rem;
+    font-weight: 200;
+    margin-bottom: 0.5em;
+
+}
+
+h4 {
+    font-size: 3.052rem;
+}
+
+p {
+    line-height: 1.5em;
+}
+
+header {
+    grid-area: header;
+    padding: 1em;
+}
+
+main {
+    grid-area: main;
+    display: grid;
+    padding: 1em;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1em;
+    align-items: center;
+}
+
+footer {
+    grid-area: footer;
+    display: flex;
+    padding: 1em;
+    border-top: 0.5px solid rgb(172, 172, 172);
+    font-size: 0.75em;
+    justify-content: center;
+}
+
+section {
+    justify-content: center;
+    padding: 2em
+}
+/* section */
+.section-2col {
+    grid-column-end: span 2;
+}
+.grid-column-start-1 {
+    grid-column-end: span 1;
+}
+.section-1col {
+    grid-column-end: span 1;
+}
+
+/* navigasi */
+.navigation {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-items: center;
+    height: 1em;
+    padding-top: 15px;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-bottom: 20px;
+    border-bottom: 0.5px solid rgb(172, 172, 172);
+}
+
+.navigation .logo {
+    font-size: 1.5em;
+}
+
+.navigation ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: black;
+}
+
+/* elements */
+
+.login-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: aliceblue;
+    border: 1px solid black;
+    padding: 2em;
+    justify-content: center;
+}
+
+input[type=text] {
+    width: 100%;
+    border: 1px solid black;
+    margin: 4px;
+    padding: 10px;
+}
+
+input[type=password] {
+    width: 100%;
+    display: block;
+    border: 1px solid black;
+    margin: 4px;
+    padding: 10px;
+}
+
+button {
+    width: 50%;
+    display: inline;
+    padding: 10px;
+
+
+    color: black;
+    background-color: aquamarine;
+    border: 1px solid black
+
+}
+
+.join-btn {
+    background-color: white;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+}
+
+.h-div {
+    margin-top: 0.5em;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+}
