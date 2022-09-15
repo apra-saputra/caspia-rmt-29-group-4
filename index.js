@@ -1,4 +1,4 @@
-let users = [
+const users = [
     {
         id:1,
         username: 'gamandan',
@@ -41,8 +41,50 @@ let users = [
     }
 ]
 
-// const date = new Date(Date.now());
-// console.log(typeofdate.toLocaleString());
+const posts = [
+    {
+        id:1,
+        nama: 'Balijan Marbun',
+        username: 'balibun',
+        message: 'This is SPARTAAAA!!!!!',
+        timestamp : '15/9/2022 16.10.56'
+    },
+    {
+        id:2,
+        nama: 'Balijan Marbun',
+        username: 'balibun',
+        message: 'Bawah jelek',
+        timestamp : '15/9/2022 16.10.57'
+    },
+    {
+        id:3,
+        nama: 'Irma Lailasari',
+        username: 'irmalaari',
+        message: 'Manusia hanyalah alat - K*y*t*k* *y*n*k*j*',
+        timestamp : '15/9/2022 16.13.56'
+    },
+    {
+        id:4,
+        nama:'Gamani Ramadan',
+        username: 'gamandan',
+        message: '**** ****** ****** kalian semua ******',
+        timestamp: '15/9/2022 16.15.56'
+    },
+    {
+        id:5,
+        nama:'Gamani Ramadan',
+        username: 'gamandan',
+        message: 'Maju kalian semua ****** anak *****, HAHA!!!',
+        timestamp: '15/9/2022 16.25.56'
+    },
+    {
+        id:6,
+        nama: 'Anastasia Permata',
+        username: 'anastata',
+        message: 'Kok pada toxic semua ya disini? :wajah bingung:',
+        timestamp: '15/9/2022 16.26.59'
+    }
+]
 
 function login(username, password){
     for(let i=0;i<users.length;i++){
@@ -51,7 +93,57 @@ function login(username, password){
             return true;
         }
     }
-    return false;
+    return false; 
 }
 
-console.log(login('irmalaari','akuCintaKamu'));
+function getUserInfo(username){
+    for(let i=0;i<users.length;i++){
+        let user = users[i];
+        if(user.username == username){
+            return user;
+        }
+    }
+
+}
+
+let idPost = posts.length;
+function post(user,message){
+    idPost++;
+    const date = new Date(Date.now());
+    let obj = {
+        id: idPost,
+        nama: user.nama,
+        username: user.username,
+        message: message,
+        timestamp: date.toLocaleString()
+    }
+    posts.push(obj);
+    return posts;
+}
+
+function editMessage(user,message,idMessage){
+    for(let i=0;i<posts.length;i++){
+        let post = posts[i];
+        if(post.id == idMessage){
+            post.message = message;
+        }
+    }
+}
+
+function deleteMessage(idMessage){
+    for(let i=0;i<posts.length;i++){
+        let post = posts[i];
+        if(post.id == idMessage){  
+            let index = posts.indexOf(post);
+            if(index > -1){
+                posts.splice(index,1);
+            }
+        }
+    }
+    console.log(posts);
+}
+
+let username = 'anastata';
+let userLogin = getUserInfo(username);
+let deletePost = deleteMessage(1);
+// console.log(posts);
