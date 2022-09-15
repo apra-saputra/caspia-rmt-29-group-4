@@ -20,6 +20,17 @@ body {
     margin-right: 2em;
 }
 
+.home {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.profile-card {
+    background-color: white;
+    border: 1px solid black;
+    min-height: 200px;
+    min-width: 100%;
+}
 
 /* text */
 
@@ -35,7 +46,6 @@ h3 {
     font-size: 1.953rem;
     font-weight: 200;
     margin-bottom: 0.5em;
-
 }
 
 h4 {
@@ -57,7 +67,6 @@ main {
     padding: 1em;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 1em;
-    align-items: center;
 }
 
 footer {
@@ -73,15 +82,24 @@ section {
     justify-content: center;
     padding: 2em
 }
+
 /* section */
 .section-2col {
     grid-column-end: span 2;
 }
+
 .grid-column-start-1 {
     grid-column-end: span 1;
 }
+
 .section-1col {
     grid-column-end: span 1;
+}
+
+.section-profile {
+    display: flex;
+    align-items: flex-start;
+    min-width: inherit;
 }
 
 /* navigasi */
@@ -105,7 +123,7 @@ section {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    justify-content: center;
+    justify-content: end;
     text-align: center;
     align-items: center;
     gap: 10px;
@@ -122,10 +140,53 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: aliceblue;
+    background-color: #41EAD4;
     border: 1px solid black;
     padding: 2em;
     justify-content: center;
+}
+
+.posting-form {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid black;
+    min-height: fit-content;
+    align-self: flex-start;
+    margin-bottom: 1em;
+}
+
+.posting-form > button {
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+.posting-form > textarea {
+    max-width: 100%;
+    padding: 20px;
+    height: 100px;
+    resize:none;
+    margin-bottom: 1em;
+
+    font-family: 'Inter';
+}
+
+.post-card {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid black;
+    min-height: fit-content;
+    align-self: flex-start;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.post-photo-placeholder {
+    min-width: 30%;
+}
+.post-text-placeholder {
+    width: 70%
+
 }
 
 input[type=text] {
@@ -144,19 +205,21 @@ input[type=password] {
 }
 
 button {
-    width: 50%;
+    width: 200px;
     display: inline;
     padding: 10px;
 
 
     color: black;
-    background-color: aquamarine;
+    background-color: #fbff12;
     border: 1px solid black
+
 
 }
 
 .join-btn {
-    background-color: white;
+    background-color: #FF206E;
+    color: white
 }
 
 div {
@@ -166,7 +229,21 @@ div {
 
 .h-div {
     margin-top: 0.5em;
+    margin-bottom: 0.5em;
     display: flex;
     flex-direction: row;
-    gap: 0.5em;
+    gap: 1em;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+p {
+    max-width: 70%;
+    padding: 0.5rem;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    object-fit:cover;
 }
