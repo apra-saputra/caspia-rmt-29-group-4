@@ -130,13 +130,6 @@ const posts = [
     }
 ]
 
-// const userloginpage2 =  {
-//     id: localStorage.getItem('id'),
-//     username: localStorage.getItem('username'),
-//     nama: localStorage.getItem('fullname'),    
-//     email: localStorage.getItem('email')
-// }
-
 //message mendapat nilai dari id='message', param user didapat dari function getUserInfo()
 let idPost = posts.length;
 // function post(userloginpage2,message){
@@ -181,14 +174,9 @@ function deleteMessage(idMessage){
             }
         }
     }
-    // console.log(posts);
+    document.getElementById('post-list').innerHTML = ''
+    render(posts)
 }
-
-// console.log(login('irmalaari','akuCintaKamu'));
-// let username = 'anastata';
-// let userLogin = getUserInfo(username);
-// let deletePost = deleteMessage(1);
-// console.log(posts);
 
 
 function sortingTerbaru(){// param data dari arr of obj posts
@@ -248,6 +236,7 @@ function render(posts) {
         // create div
         const postcard = document.createElement('div')
         postcard.classList.add('post-card')
+        postcard.setAttribute('id', posts[i].id)
         // create div
         const hdiv = document.createElement('div')
         hdiv.classList.add('h-div')
@@ -287,21 +276,10 @@ function render(posts) {
         //create button
         const btndel = document.createElement('button')
         btndel.classList.add('delete-button')
-        // btndel.remove()
-        // btndel.addEventListener('click',function deleteMessage(idMessage){
-        //     for(let i=0;i<posts.length;i++){
-        //         let post = posts[i];
-        //         if(post.id == idMessage){  
-        //             let index = posts.indexOf(post);
-        //             if(index > -1){
-        //                 posts.splice(index,1);
-        //             }
-        //         }
-        //     }
-        //     location.reload()
-        // })
+        let id = posts[i].id
+        btndel.setAttribute('onclick', `deleteMessage(${id})`)
         btndel.innerText = 'Delete'
-
+        
 
         hdivinfo.appendChild(fullname)
         hdivinfo.appendChild(bar)
@@ -319,11 +297,9 @@ function render(posts) {
         hdiv.appendChild(vdiv)
         postcard.appendChild(hdiv)
         postlist.appendChild(postcard)
-
-        // // const btndelete = document.getElementsByClassName('delete-button')
-        // // btndelete.addEventListener('click', function (){
-        // //     console.log('test')
-        // })
+        
+        
+        //delete
     }
   }
 render(posts)
