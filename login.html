@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Selamat Datang di Twitwor</title>
 </head>
 <body>
         <header>
@@ -27,26 +27,28 @@
                 <h1>Twitwor</h1>
                 <h3>Ada keributan apa hari ini?</h3>
                 <p>
-                    Selamat datang di ruang bebas toxic!
-                    Mengumpat <em>made easy</em>
+                    Temukan dan bergabung dalam keributan yang cocok denganmu!
                 </p>
-            </section>
-
-            <section class="section-1col">
-                <div>
-                    <form action="" class="login-card">
-                        <input type="text" name="username" id="username" placeholder="username">
-                        <input type="password" name="password" id="password" placeholder="password">
-                    </form>
+                <div class="v-div" style="align-items: flex-start;">
+                    <img src="img/login-2.png" style="height: 500px; width:500px";>
                 </div>
-                <div class="h-div">
-                    <button>Masuk</button>
-                    <button class="join-btn">Daftar</button>
+            </section>
+            
+            <section class="section-1col">
+                <div class="login-card">
+                    <!-- tag form dihilangkan -->
+                    <input type="text" name="username" id="username" placeholder="username">
+                    <input type="password" name="password" id="password" placeholder="password">
+                    <div class="h-div">
+                        <button onclick="login()">Masuk</button>
+                        <button class="join-btn">Daftar</button>
+                    </div>
                 </div>
             </section>
         </main>
         <footer>
             2022 - Twitwor
         </footer>
+        <script src="index.js"></script>
 </body>
 </html>

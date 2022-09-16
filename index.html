@@ -1,1 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Beranda</title>
+</head>
+<body>
+    <header>
+        <nav class="navigation">
+            <div>
+                <h1 class="logo">Twitwor</h1>
+            </div>
+            <div class="navigation-list">
+                <ul>
+                <li><a href="">Beranda</a></li>
+                <li><a href="">Profil</a></li>
+                <li><a href="login.html" >Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+        <main class="home">
+            <section class="section-profile">
+                <div class="profile-card">
+                    <div class="h-div" id="profilecard">
+                        <img src="img/profile-1.jpg" alt="">
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="posting-form v-div">
+                    <textarea name="" id="postedtext" cols="30" rows="3" placeholder="Ada keributan apa hari ini?"></textarea>
+                    <button onclick="getpost()" id="">Post</button>
+                </div>
+                <hr>
+                <div class="h-div sort-button-container">
+                <p>
+                    <strong>
+                        Sort By:
+                    </strong>
+                </p>
+                <button onclick="sortNewst()">Newest</button>
+                <button onclick="sortOldest()">Oldest</button>
+                </div>
+                <hr>
+                <!-- running on read data -->
+                <section id="post-list">
+                    
+                </section>
+            </section>
 
+        </main>
+    </header>
+    <footer>
+        2022 - Twitwor
+    </footer>
+    <script src="index.js">
+    </script>
+</body>
+</html>
