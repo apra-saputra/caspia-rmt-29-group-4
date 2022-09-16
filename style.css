@@ -5,7 +5,7 @@ html { font-family: 'Inter', sans-serif; }
 }
 /* font */
 * {
-    font-size: 16px;
+    font-size: 18px;
     margin: 0;
     padding: 0;
 }
@@ -26,7 +26,6 @@ body {
 }
 
 .profile-card {
-    background-color: white;
     border: 1px solid black;
     min-height: 200px;
     min-width: 100%;
@@ -88,12 +87,21 @@ section {
 /* section */
 .section-2col {
     grid-column-end: span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.login-img {
+    display: block;
 }
 .grid-column-start-1 {
     grid-column-end: span 1;
 }
 .section-1col {
     grid-column-end: span 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 .section-profile {
     display: grid;
@@ -152,6 +160,8 @@ section {
 .login {
     display: flex;
 }
+
+
 
 .posting-form {
     background-color: white;
@@ -244,8 +254,11 @@ div {
     justify-content: space-around;
 }
 
-.profile-card > .v-div {
-    min-width: 80%;
+.profile-card .v-div {
+    display: flex;
+    align-self: flex-start;
+    justify-content: flex-start;
+    min-width: 200px;;
 }
 
 
@@ -286,6 +299,13 @@ img {
     width: 200px;
     height: 200px;
     object-fit:cover;
+}
+
+.background {
+    margin: 10px;
+    padding: 2rem;
+    width: 800px;
+    height: 500px;
 }
 
   .sort-button-container {
