@@ -42,13 +42,17 @@ let users = [
     }
 ]
 
-// function selectImg(obj) {
-//     obj.username
-//     var myImage = new Image(300, 300);
-//     myImage.src = 'gambar.jpg';
-//     x = document.getElementById("gambar");
-//     x.appendChild(myImage);	
-// }
+
+function getUserInfo(username){ //dari id = 'username'
+    for(let i=0;i<users.length;i++){
+        let user = users[i];
+        if(user.username == username){
+            return user;
+        }
+    }
+}
+
+let userlogin = {}
 
 function login(){
     let nameuser = document.getElementById('username').value
@@ -64,7 +68,13 @@ function login(){
             location.reload()
             break;
         }else if(user.username == nameuser && user.password == passcode){
+            userlogin = getUserInfo(nameuser)
+            localStorage.setItem('username',userlogin.username)
+            localStorage.setItem('fullname',userlogin.nama)
+            localStorage.setItem('id',userlogin.id)
+            localStorage.setItem('email',userlogin.email)
             location.replace('index.html')
+            return userlogin
         }
     }
 }
@@ -120,38 +130,42 @@ const posts = [
     }
 ]
 
-// const username = document.getElementById('username').value
-function getUserInfo(username){ //dari id = 'username'
-// function getUserInfo(){
-    for(let i=0;i<users.length;i++){
-        let user = users[i];
-        if(user.username == username){
-            return user;
-        }
-    }
-}
-
+// const userloginpage2 =  {
+//     id: localStorage.getItem('id'),
+//     username: localStorage.getItem('username'),
+//     nama: localStorage.getItem('fullname'),    
+//     email: localStorage.getItem('email')
+// }
 
 //message mendapat nilai dari id='message', param user didapat dari function getUserInfo()
 let idPost = posts.length;
-function post(user,message){
+// function post(userloginpage2,message){
+function post(){
+    const userloginpage2 =  {
+    id: localStorage.getItem('id'),
+    username: localStorage.getItem('username'),
+    nama: localStorage.getItem('fullname'),    
+    email: localStorage.getItem('email')
+    }
+    let message = document.getElementById('postedtext').value
     idPost++;
     const date = new Date(Date.now());
     let obj = {
         id: idPost,
-        nama: user.nama,
-        username: user.username,
+        nama: userloginpage2.nama,
+        username: userloginpage2.username,
         message: message,
         timestamp: date
     }
     posts.push(obj);
+    document.getElementById('postedtext').value = ''
     return posts;
 }
 
-function editMessage(user,message,idMessage){
+function editMessage(userloginpage2,message,idMessage){
     for(let i=0;i<posts.length;i++){
         let post = posts[i];
-        if(post.id == idMessage && user.username == post.username){
+        if(post.id == idMessage && userloginpage2.username == post.username){
             post.message = message;
         }
     }
@@ -177,7 +191,8 @@ function deleteMessage(idMessage){
 // console.log(posts);
 
 
-function sortingTerbaru(data){// param data dari arr of obj posts
+function sortingTerbaru(){// param data dari arr of obj posts
+    let data = posts
     for (let i = 0; i < data.length; i++){
         for (let j = 0; j < data.length-1; j++){
             let temp = data[j]
@@ -192,7 +207,8 @@ function sortingTerbaru(data){// param data dari arr of obj posts
 
 // console.log(sortingTerbaru(posts))
 
-function sortingTerdahulu(data){// param data dari arr of obj posts
+function sortingTerdahulu(){// param data dari arr of obj posts
+    let data = posts
     for (let i = 0; i < data.length; i++){
         for (let j = 0; j < data.length-1; j++){
             let temp = data[j]
@@ -221,10 +237,13 @@ console.log(post(contohUser,'ini apa sih'))
 
 //selector
 // const postlist = document.querySelector('.postlist')
+const postlist =  document.getElementById('post-list')
+const profilecard = document.getElementById('profilecard')
+// console.log(document.querySelector('#post-list'))
 
-function render() {
-    const postlist =  document.getElementById('.postlist')
+function render(posts) {
     // put all task to html
+
     for (let i = 0; i < posts.length; i++) {
         // create div
         const postcard = document.createElement('div')
@@ -233,14 +252,122 @@ function render() {
         const hdiv = document.createElement('div')
         hdiv.classList.add('h-div')
         // create img
+        const img = document.createElement('img')
+        img.src = "img/profile-1.jpg"
+        // create div
+        const vdiv = document.createElement('div')
+        vdiv.classList.add('v-div')
+        // create div
+        const vdiv2 = document.createElement('div')
+        vdiv2.classList.add('v-div')
+        
+        // create div
+        const hdivinfo = document.createElement('div')
+        hdivinfo.classList.add('h-div')
+        hdivinfo.classList.add('user-info')
+        // create fullname
+        const fullname = document.createElement('p')
+        fullname.innerText = `${posts[i].nama}`;
+        // create bar
+        const bar = document.createElement('p')
+        bar.innerText = `|`;
+        // create username
+        const username = document.createElement('p')
+        username.innerText = `${posts[i].username}`;
+        // create bar
+        // create timestamp
+        const timestamp = document.createElement('p')
+        // let date = Date.localstring(posts[i].timestamp)
+        timestamp.innerText = `${posts[i].timestamp.toLocaleString()}`;
 
         // create paragraf
         const parag = document.createElement('p')
-        parag.innerText = `${posts[i].message}`
-        
-        hdiv.appendChild(parag)
+        parag.innerText = `${posts[i].message}`;
+
+        //create button
+        const btndel = document.createElement('button')
+        btndel.classList.add('delete-button')
+        // btndel.remove()
+        // btndel.addEventListener('click',function deleteMessage(idMessage){
+        //     for(let i=0;i<posts.length;i++){
+        //         let post = posts[i];
+        //         if(post.id == idMessage){  
+        //             let index = posts.indexOf(post);
+        //             if(index > -1){
+        //                 posts.splice(index,1);
+        //             }
+        //         }
+        //     }
+        //     location.reload()
+        // })
+        btndel.innerText = 'Delete'
+
+
+        hdivinfo.appendChild(fullname)
+        hdivinfo.appendChild(bar)
+        hdivinfo.appendChild(username)
+        hdivinfo.appendChild(bar)
+        hdivinfo.appendChild(timestamp)
+
+        vdiv2.appendChild(parag)
+
+
+        vdiv.appendChild(hdivinfo)
+        vdiv.appendChild(vdiv2)
+        vdiv.appendChild(btndel)
+        hdiv.appendChild(img)
+        hdiv.appendChild(vdiv)
         postcard.appendChild(hdiv)
         postlist.appendChild(postcard)
+
+        // // const btndelete = document.getElementsByClassName('delete-button')
+        // // btndelete.addEventListener('click', function (){
+        // //     console.log('test')
+        // })
     }
   }
-//   render()
+render(posts)
+
+function renderprofil(){
+    const vdiv3 = document.createElement('div')
+    vdiv3.classList.add('v-div')
+        // create fullname
+    const fullname1 = document.createElement('p')
+    
+    fullname1.innerText = `${localStorage.getItem('fullname')}`;
+         // create username
+    const username1 = document.createElement('p')
+    username1.innerText = `@${localStorage.getItem('username')}`;
+
+    vdiv3.appendChild(fullname1)
+    vdiv3.appendChild(username1)
+    profilecard.appendChild(vdiv3)
+}
+renderprofil()
+
+function getpost (){
+    for(let i = 0; i <posts.length; i++){
+        postlist.removeChild(postlist.lastChild)
+    }
+    render(post())
+}
+function sortNewst (){
+    for(let i = 0; i <posts.length; i++){
+        postlist.removeChild(postlist.lastChild)
+    }
+    render(sortingTerbaru())
+}
+function sortOldest (){
+    for(let i = 0; i <posts.length; i++){
+        postlist.removeChild(postlist.lastChild)
+    }
+    render(sortingTerdahulu())
+}
+
+
+
+// const btndel = 
+{/* <div class="v-div">
+<p>User Name</p>
+<p>@username</p>
+</div> */}

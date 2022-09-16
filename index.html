@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Beranda</title>
 </head>
 <body>
     <header>
@@ -15,36 +15,41 @@
             </div>
             <div class="navigation-list">
                 <ul>
-                    <li></li>
-                    <li></li>
-                    <li><a href="login.html">logout</a></li>
+                <li><a href="">Beranda</a></li>
+                <li><a href="">Profil</a></li>
+                <li><a href="login.html" >Pengaturan</a></li>
                 </ul>
             </div>
         </nav>
         <main class="home">
             <section class="section-profile">
                 <div class="profile-card">
-                    <p>User Name</p>
-                    <p>@username</p>
+                    <div class="h-div" id="profilecard">
+                        <img src="img/profile-1.jpg" alt="">
+                        <!-- <div class="v-div">
+                            <p>User Name</p>
+                            <p>@username</p>
+                        </div> -->
+                    </div>
 
                 </div>
-            </section class="section-profile">
-            <section>
-                <div class="posting-form">
-                    <textarea name="" id="" cols="30" rows="3" placeholder="Ada keributan apa hari ini?"></textarea>
-                    <button >Post</button>
+            </section>
+            <section id="post-list">
+                <div class="posting-form v-div">
+                    <textarea name="" id="postedtext" cols="30" rows="3" placeholder="Ada keributan apa hari ini?"></textarea>
+                    <button onclick="getpost()" id="">Post</button>
                 </div>
                 <hr>
-                <div class="postlist">
-                    <!-- <div class="post-card">
-                        <div class="h-div">
-                            <img src="img/profile-1.jpg" alt="">
-                            <p>
-                                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
-                            </p>
-                        </div>
-                    </div> -->
+                <div class="h-div sort-button-container">
+                <p>
+                    <strong>
+                        Sort By:
+                    </strong>
+                </p>
+                <button onclick="sortNewst()">Newest</button>
+                <button onclick="sortOldest()">Oldest</button>
                 </div>
+                <hr>
             </section>
 
         </main>
@@ -52,9 +57,8 @@
     <footer>
         2022 - Twitwor
     </footer>
-    <script src="index.js"></script>
-    <script>
-        render()
+    <script src="index.js">
+        
     </script>
 </body>
 </html>

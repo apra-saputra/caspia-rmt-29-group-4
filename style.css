@@ -5,7 +5,7 @@ html { font-family: 'Inter', sans-serif; }
 }
 /* font */
 * {
-    font-size: 20px;
+    font-size: 18px;
     margin: 0;
     padding: 0;
 }
@@ -26,12 +26,13 @@ body {
 }
 
 .profile-card {
-    background-color: white;
     border: 1px solid black;
     min-height: 200px;
     min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 }
-
 /* text */
 
 h1 {
@@ -46,6 +47,7 @@ h3 {
     font-size: 1.953rem;
     font-weight: 200;
     margin-bottom: 0.5em;
+
 }
 
 h4 {
@@ -82,30 +84,39 @@ section {
     justify-content: center;
     padding: 2em
 }
-
 /* section */
 .section-2col {
     grid-column-end: span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-
+.login-img {
+    display: block;
+}
 .grid-column-start-1 {
     grid-column-end: span 1;
 }
-
 .section-1col {
     grid-column-end: span 1;
-}
-
-.section-profile {
     display: flex;
-    align-items: flex-start;
-    min-width: inherit;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.section-profile {
+    display: grid;
+    grid-template-columns: 2fr;
+    max-height: 250px;
+    align-items: center;
+    /* display: flex;
+    align-items: flex-start; */
 }
 
 /* navigasi */
 .navigation {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
+
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     height: 1em;
     padding-top: 15px;
@@ -120,10 +131,10 @@ section {
 }
 
 .navigation ul {
+    display: flex;
+    flex-direction: row;
     list-style: none;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: end;
+    justify-content: center;
     text-align: center;
     align-items: center;
     gap: 10px;
@@ -139,12 +150,18 @@ section {
 .login-card {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     background-color: #41EAD4;
     border: 1px solid black;
-    padding: 2em;
-    justify-content: center;
+    padding: 20px;
+    justify-content: space-evenly;
 }
+
+.login {
+    display: flex;
+}
+
+
 
 .posting-form {
     background-color: white;
@@ -185,36 +202,40 @@ section {
     min-width: 30%;
 }
 .post-text-placeholder {
-    width: 70%
-
+    width: 70%;
+    margin-bottom: 2rem;
 }
 
 input[type=text] {
-    width: 100%;
     border: 1px solid black;
     margin: 4px;
     padding: 10px;
 }
 
 input[type=password] {
-    width: 100%;
     display: block;
     border: 1px solid black;
     margin: 4px;
     padding: 10px;
 }
 
+
 button {
     width: 200px;
     display: inline;
     padding: 10px;
+    margin: 4px;
 
 
     color: black;
     background-color: #fbff12;
     border: 1px solid black
+    
 
+}
 
+button:active {
+    background-color: #a7c957;
 }
 
 .join-btn {
@@ -224,11 +245,25 @@ button {
 
 div {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
 }
 
+.v-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.profile-card .v-div {
+    display: flex;
+    align-self: flex-start;
+    justify-content: flex-start;
+    min-width: 200px;;
+}
+
+
 .h-div {
-    margin-top: 0.5em;
+    margin-top: 1em;
     margin-bottom: 0.5em;
     display: flex;
     flex-direction: row;
@@ -237,9 +272,27 @@ div {
     align-items: flex-start;
 }
 
+.user-info {
+    justify-content: flex-start;
+}
+
+.delete-button {
+    margin-top: 2rem;
+    align-self: flex-end;
+    background-color: #FF206E;
+    color: white;
+}
 p {
-    max-width: 70%;
     padding: 0.5rem;
+    display: inline;
+}
+
+.name {
+    font-weight: 800;
+}
+
+.username {
+    font-style: italic;
 }
 
 img {
@@ -247,3 +300,23 @@ img {
     height: 200px;
     object-fit:cover;
 }
+
+.background {
+    margin: 10px;
+    padding: 2rem;
+    width: 800px;
+    height: 500px;
+}
+
+  .sort-button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+.sort-button-container button {
+    background-color: white;
+    border: 1px solid grey;
+}
+  .sort-button-container button:active {
+    background-color: #41EAD4;
+  }
